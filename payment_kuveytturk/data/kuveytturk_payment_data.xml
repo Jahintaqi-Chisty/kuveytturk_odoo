@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Payment acquirer "config". -->
+        <record id="kuveytturk_payment" model="payment.acquirer">
+            <field name="name">kuveytturk Payment Gateway</field>
+            <field name="display_as">Credit Card (using KuveytTürk)</field>
+            <field name="description">Payment gateway from KuveytTürk to accept online payments from credit cards.</field>
+            <field name="image_128" type="base64" file="payment_kuveytturk/static/src/img/kuveytturk.png"/>
+            <field name="provider">kuveytturk</field>
+            <field name="state">test</field>
+<!--            <field name="view_template_id" ref="kuveytturk_form"/>-->
+            <field name="module_id" ref="base.module_payment_kuveytturk"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="inline_form_view_id" ref="kuveytturk_form"/>
+            <field name="company_id" ref="base.main_company"/>
+
+            <!-- Extra parameters needed by this specific acquirer. -->
+            <field name="kuveytturk_callback_base_url">https://yoursite.com</field>
+        </record>
+
+        <!--# Payment Method -->
+        <record id="payment_method_kuveytturk_inbound" model="account.payment.method">
+            <field name="name">KuveytTürk</field>
+            <field name="code">kuveytturk</field>
+            <field name="payment_type">inbound</field>
+        </record>
+    </data>
+</odoo>
